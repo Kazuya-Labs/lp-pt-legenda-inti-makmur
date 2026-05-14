@@ -1,0 +1,20 @@
+---
+const { pt } = Astro.props;
+---
+
+<div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+  <h1 class="text-2xl font-bold text-blue-700 tracking-tight">
+    {pt}
+  </h1>
+  <nav class="hidden md:flex gap-8 font-medium text-slate-600">
+    <a href="#tentang" class="hover:text-blue-600 transition">Tentang Kami</a>
+    <a href="#produk" class="hover:text-blue-600 transition">Produk</a>
+    <a href="#testimoni" class="hover:text-blue-600 transition">Testimoni</a>
+  </nav>
+  <a
+    href="#kontak"
+    class="bg-blue-600 text-white px-5 py-2.5 rounded-lg font-semibold hover:bg-blue-700 transition shadow-md shadow-blue-200"
+  >
+    Hubungi Kami
+  </a>
+</div>

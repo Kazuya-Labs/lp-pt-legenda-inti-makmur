@@ -1,0 +1,58 @@
+---
+// Pindahkan atau pastikan variabel ini berada di dalam blok frontmatter Astro (di antara tanda ---)
+const url_facebook = "https://m.facebook.com/TOKOnlineNUsantara";
+const nomor_telephone = "+62822-2115-5363";
+
+const data = [
+  {
+    // Icon Facebook Font Awesome Free
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" width="24px" height="24px" fill="#ffffff"><!--!Font Awesome Free v7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path d="M80 299.3l0 212.7 116 0 0-212.7 86.5 0 18-97.8-104.5 0 0-34.6c0-51.7 20.3-71.5 72.7-71.5 16.3 0 29.4 .4 37 1.2l0-88.7C291.4 4 256.4 0 236.2 0 129.3 0 80 50.5 80 159.4l0 42.1-66 0 0 97.8 66 0z"/></svg>`,
+    link: url_facebook,
+    title: "Toko Online Nusantara",
+  },
+  {
+    // Icon WhatsApp (Menggunakan warna putih agar terlihat di background gelap)
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#ffffff"><path d="M798-120q-125 0-247-54.5T329-329Q229-429 174.5-551T120-798q0-18 12-30t30-12h162q14 0 25 9.5t13 22.5l26 140q2 16-1 27t-11 19l-97 98q20 37 47.5 71.5T387-386q31 31 65 57.5t72 48.5l94-94q9-9 23.5-13.5T670-390l138 28q14 4 23 14.5t9 23.5v162q0 18-12 30t-30 12ZM241-600l66-66-17-94h-89q5 41 14 81t26 79Zm358 358q39 17 79.5 27t81.5 13v-88l-94-19-67 67ZM241-600Zm358 358Z"/></svg>`,
+    link: "wa.me" + nomor_telephone.replace(/[^0-9]/g, ""), // Perbaikan tautan WA otomatis menghilangkan karakter strip/plus
+    title: nomor_telephone,
+  },
+];
+---
+
+<footer class="bg-gray-900 p-10 h-full rounded-md w-full text-center">
+  <!-- Flexbox container untuk merapikan barisan ikon -->
+   <p class="text-2xl text-white text-center font-semibold my-3"> Ikuti Kami</p>
+  <ul class="flex flex-col md:flex-row gap-4 md:gap-8 mb-4">
+    {
+      data.map((value) => (
+        <li class="flex text-white items-center md:mx-auto md:justify-center transition-colors duration-300 hover:text-blue-400">
+          {/* Wrapper SVG dengan manipulasi class Tailwind */}
+          <div
+            class="flex items-center mx-1  [&>svg]:w-full [&>svg]:h-full"
+            set:html={value.icon}
+          />
+          <a
+            href={value.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-sm font-medium"
+          >
+            {value.title}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+
+  <div class="w-full my-1 h-full">
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3956.7725785477733!2d109.0820452!3d-7.3793657!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e6563e5a1608205%3A0xa3d4fbcbd99d6d84!2sLegenda%20inti%20makmur!5e0!3m2!1sid!2sid!4v1778775878185!5m2!1sid!2sid"
+      class="rounded md:w-full h-full"
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"></iframe>
+  </div>
+
+  <p class="text-xs text-gray-400 pt-2 border-t border-gray-800">
+    &copy; 2026 PT Legenda Inti Makmur. All rights reserved.
+  </p>
+</footer>

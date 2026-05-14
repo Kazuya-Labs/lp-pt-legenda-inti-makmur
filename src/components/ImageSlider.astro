@@ -1,0 +1,68 @@
+---
+
+import {Image} from 'astro:assets'
+
+interface Props {
+  data: { img: ImageMetadata; alt: string }[];
+}
+const { data } = Astro.props;
+---
+
+<div class="max-w-5xl mx-auto px-4 py-5">
+  <!-- Container Utama -->
+  <div class="relative group">
+    <!-- Area Slide -->
+    <!-- snap-x = aktifkan snap horizontal -->
+    <!-- scroll-smooth = transisi scroll halus -->
+    <!-- no-scrollbar = (opsional) jika kamu pakai plugin tailwind-scrollbar -->
+    <div
+      id="slider"
+      class="flex overflow-x-auto snap-x snap-mandatory scroll-smooth gap-4 no-scrollbar"
+    >
+      {
+        data.map((img) => (
+          <div class="min-w-[100%]  snap-center">
+            <div class="relative h-full  rounded-3xl overflow-hidden shadow-lg  border-white">
+              <Image
+                src={img.img}
+                loading='lazy'
+                alt={img.alt}
+                class="w-full aspect-square h-full object-cover"
+              />
+              <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-6">
+                <p class="text-white font-bold">{img.alt}</p>
+              </div>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+
+    <!-- Tombol Navigasi menggunakan DOM -->
+    <button
+      onclick="document.getElementById('slider').scrollLeft -= 400"
+      class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 bg-white p-3 rounded-full shadow-xl text-blue-600 opacity-0 group-hover:opacity-100 transition-opacity hidden md:block"
+    >
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+        ><path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M15 19l-7-7 7-7"></path></svg
+      >
+    </button>
+
+    <button
+      onclick="document.getElementById('slider').scrollLeft += 400"
+      class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 bg-white p-3 rounded-full shadow-xl text-blue-600 opacity-0 group-hover:opacity-100 transition-opacity hidden md:block"
+    >
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+        ><path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M9 5l7 7-7 7"></path></svg
+      >
+    </button>
+  </div>
+</div>

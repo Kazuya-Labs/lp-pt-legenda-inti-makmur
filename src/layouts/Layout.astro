@@ -1,0 +1,31 @@
+---
+interface Props {
+	title: string;
+	description: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<!doctype html>
+<html lang="id" class="scroll-smooth">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		
+		<!-- SEO Meta Tags -->
+		<title>{title}</title>
+		<meta name="description" content={description} />
+		<meta name="keywords" content="PT Legenda Inti Makmur, Nagata, alat kebersihan, perabotan plastik, pabrik plastik Banyumas, solusi kebersihan rumah" />
+		
+		<!-- Open Graph / Social Media -->
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:type" content="website" />
+	</head>
+	<body class="bg-slate-50 font-sans text-slate-800 antialiased">
+		<slot />
+	</body>
+</html>

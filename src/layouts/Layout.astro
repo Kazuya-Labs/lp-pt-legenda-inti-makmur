@@ -1,31 +1,61 @@
 ---
 interface Props {
-	title: string;
-	description: string;
+  title: string;
+  description: string;
+  image?: string; // Menambahkan opsi custom image untuk share ke sosmed
+  canonicalURL?: string; // Menambahkan opsi custom canonical URL jika diperlukan
 }
 
-const { title, description } = Astro.props;
+const { 
+  title, 
+  description, 
+  image = '/logo-legenda.jpg', // Gambar default untuk share (taruh file di folder public/)
+  canonicalURL = Astro.url.href // Otomatis mengambil URL halaman aktif saat ini
+} = Astro.props;
 ---
 
 <!doctype html>
 <html lang="id" class="scroll-smooth">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		
-		<!-- SEO Meta Tags -->
-		<title>{title}</title>
-		<meta name="description" content={description} />
-		<meta name="keywords" content="PT Legenda Inti Makmur, Nagata, alat kebersihan, perabotan plastik, pabrik plastik Banyumas, solusi kebersihan rumah" />
-		
-		<!-- Open Graph / Social Media -->
-		<meta property="og:title" content={title} />
-		<meta property="og:description" content={description} />
-		<meta property="og:type" content="website" />
-	</head>
-	<body class="bg-slate-50 font-sans text-slate-800 antialiased">
-		<slot />
-	</body>
+  <head>
+    <!-- Keamanan & Teknis Dasar -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- Favicon & PWA Icons -->
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="Legenda Inti Makmur" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <!-- SEO Utama -->
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="keywords" content="PT Legenda Inti Makmur, Nagata, alat kebersihan, perabotan plastik, pabrik plastik Banyumas, solusi kebersihan rumah" />
+    <link rel="canonical" href={canonicalURL} />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={new URL(image, Astro.url)} />
+    <meta property="og:image:alt" content={`Gambar pratinjau untuk ${title}`} />
+    <meta property="og:locale" content="id_ID" />
+    <meta property="og:site_name" content="PT Legenda Inti Makmur" />
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={canonicalURL} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={new URL(image, Astro.url)} />
+
+  </head>
+  <body class="bg-slate-50 font-sans text-slate-800 antialiased">
+    <slot />
+  </body>
 </html>

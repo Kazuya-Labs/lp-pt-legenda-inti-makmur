@@ -1,20 +1,168 @@
 ---
-const { pt } = Astro.props;
+import "../styles/global.css";
+
+// Interface Props dengan TypeScript yang valid
+interface Props {
+  pt?: string;
+  navlink?: {
+    link: string;
+    name: string;
+  }[];
+  cta?: boolean;
+}
+
+// Menentukan nilai default langsung saat destructuring props
+const {
+  pt = "PT Legenda Inti Makmur",
+  navlink = [
+    { link: "/", name: "Home" },
+    { link: "#tentang", name: "Tentang Kami" },
+    { link: "#produk", name: "Produk" },
+    { link: "#testimoni", name: "Testimoni" },
+    { link: "/galery", name: "Galeri" },
+  ],
+  cta = true,
+} = Astro.props;
 ---
 
-<div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-  <h1 class="text-2xl font-bold text-blue-700 tracking-tight">
-    {pt}
-  </h1>
-  <nav class="hidden md:flex gap-8 font-medium text-slate-600">
-    <a href="#tentang" class="hover:text-blue-600 transition">Tentang Kami</a>
-    <a href="#produk" class="hover:text-blue-600 transition">Produk</a>
-    <a href="#testimoni" class="hover:text-blue-600 transition">Testimoni</a>
-  </nav>
-  <a
-    href="#kontak"
-    class="bg-blue-600 text-white px-5 py-2.5 rounded-lg font-semibold hover:bg-blue-700 transition shadow-md shadow-blue-200"
+<header class="w-full bg-white border-b border-slate-100">
+  <div
+    class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center relative"
   >
-    Hubungi Kami
-  </a>
-</div>
+    <!-- Nama PT / Logo (Menggunakan div/span, h1 dipesan untuk konten utama halaman) -->
+    <div class="text-2xl font-bold text-blue-700 tracking-tight z-50">
+      {pt}
+    </div>
+
+    <!-- Hamburger Button dengan Atribut Aksesibilitas ARIA -->
+    <button
+      id="hamburger-btn"
+      class="block md:hidden text-slate-700 focus:outline-none z-50 p-2"
+      aria-label="Buka Menu Navigasi"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+    >
+      <svg
+        class="w-6 h-6"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+        aria-hidden="true"
+      >
+        <path
+          id="hamburger-icon"
+          class="block"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M4 6h16M4 12h16M4 18h16"></path>
+        <path
+          id="close-icon"
+          class="hidden"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M6 18L18 6M6 6l12 12"></path>
+      </svg>
+    </button>
+
+    <!-- Navigasi Utama menggunakan Elemen List Semantik -->
+    <nav
+      id="mobile-menu"
+      aria-label="Navigasi Utama"
+      class="hidden absolute top-full left-0 w-full bg-white border-b border-slate-100 p-6 flex-col gap-6 font-medium text-slate-700 shadow-xl z-40
+             md:flex md:static md:w-auto md:border-none md:p-0 md:flex-row md:gap-8 md:shadow-none"
+    >
+      <ul
+        class="flex flex-col gap-6 md:flex-row md:gap-8 list-none p-0 m-0 w-full"
+      >
+        {
+          navlink.map((item) => (
+            <li>
+              <a
+                href={item.link}
+                class="hover:text-blue-700 transition nav-link block py-2 md:py-0 focus-visible:outline focus-visible:outline-2 focus-visible:outline-blue-700 rounded"
+              >
+                {item.name}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+
+      <!-- Tombol CTA Mobile (Di dalam nav) -->
+     { cta && <a
+        href="#kontak"
+        class="bg-blue-700 text-white px-5 py-2.5 rounded-lg font-semibold hover:bg-blue-800 transition shadow-md shadow-blue-200 text-center block md:hidden whitespace-nowrap"
+      >
+        Hubungi Kami
+      </a>}
+    </nav>
+
+    <!-- Tombol CTA Utama (Hanya terlihat di Desktop) -->
+    {
+      cta && (
+        <a
+          href="#kontak"
+          class="hidden md:inline-block bg-blue-700 text-white px-5 py-2.5 rounded-lg font-semibold hover:bg-blue-800 transition shadow-md shadow-blue-200 whitespace-nowrap"
+        >
+          Hubungi Kami
+        </a>
+      )
+    }
+  </div>
+</header>
+
+<script>
+  // Menggunakan type assertion karena Astro memproses script sebagai modul terisolasi
+  const hamburgerBtn = document.getElementById(
+    "hamburger-btn",
+  ) as HTMLButtonElement | null;
+  const mobileMenu = document.getElementById(
+    "mobile-menu",
+  ) as HTMLElement | null;
+  const hamburgerIcon = document.getElementById(
+    "hamburger-icon",
+  ) as SVGPathElement | null;
+  const closeIcon = document.getElementById(
+    "close-icon",
+  ) as SVGPathElement | null;
+  const navLinks = document.querySelectorAll(".nav-link");
+
+  if (hamburgerBtn && mobileMenu && hamburgerIcon && closeIcon) {
+    // Fungsi untuk memperbarui status ARIA aksesibilitas saat menu dibuka/tutup
+    function updateAccessibility(isOpen: boolean) {
+      hamburgerBtn?.setAttribute("aria-expanded", isOpen ? "true" : "false");
+      hamburgerBtn?.setAttribute(
+        "aria-label",
+        isOpen ? "Tutup Menu Navigasi" : "Buka Menu Navigasi",
+      );
+    }
+
+    function toggleMenu() {
+      const isHidden = mobileMenu?.classList.toggle("hidden");
+
+      if (!isHidden) {
+        mobileMenu?.classList.add("flex");
+        hamburgerIcon?.classList.replace("block", "hidden");
+        closeIcon?.classList.replace("hidden", "block");
+        updateAccessibility(true);
+      } else {
+        mobileMenu?.classList.remove("flex");
+        hamburgerIcon?.classList.replace("hidden", "block");
+        closeIcon?.classList.replace("block", "hidden");
+        updateAccessibility(false);
+      }
+    }
+
+    hamburgerBtn.addEventListener("click", toggleMenu);
+
+    navLinks.forEach((link) => {
+      link.addEventListener("click", () => {
+        if (!mobileMenu.classList.contains("hidden")) {
+          toggleMenu();
+        }
+      });
+    });
+  }
+</script>

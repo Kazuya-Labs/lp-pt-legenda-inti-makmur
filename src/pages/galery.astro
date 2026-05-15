@@ -1,0 +1,43 @@
+---
+import Layout from "../layouts/Layout.astro";
+import GaleryComponents from "../components/GaleryComponents.astro";
+import Footer from "../components/Footer.astro";
+import Navbar from "../components/Navbar.astro";
+
+// Schema Markup untuk Validasi Pencarian Video/Galeri Google
+const schemaMarkup = {
+  "@context": "https://schema.org",
+  "@type": "CreativeWorkSeries",
+  "name": "Galeri Video Produksi PT Legenda Inti Makmur",
+  "description": "Dokumentasi resmi proses manufaktur, lini produksi, dan standar kualitas pembuatan perabotan plastik serta alat kebersihan PT Legenda Inti Makmur.",
+  "provider": {
+    "@type": "Organization",
+    "name": "PT Legenda Inti Makmur",
+    "url": "https://legendaintimakmur.com",
+    "logo": "https://legendaintimakmur.com" 
+  }
+};
+---
+
+<Layout
+  title="Proses Produksi Alat Kebersihan Plastik | PT Legenda Inti Makmur"
+  description="Lihat galeri dokumentasi proses pembuatan perabotan plastik dan alat kebersihan industri/rumah tangga bermutu tinggi di pabrik PT Legenda Inti Makmur."
+>
+  <script
+    type="application/ld+json"
+    set:html={JSON.stringify(schemaMarkup)}
+    slot="head"
+  />
+
+  <!-- Tetap konsisten menggunakan Nama PT Utama pada Navbar -->
+  <Navbar
+    pt="PT Legenda Inti Makmur"
+    navlink={[{ link: "/", name: "Home" }]}
+  />
+
+  <main id="main-content">
+    <GaleryComponents />
+  </main>
+
+  <Footer />
+</Layout>

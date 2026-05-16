@@ -1,0 +1,51 @@
+---
+const { whatsapp } = Astro.props;
+
+const data = [
+  {
+    title: "Gabung Grup Whatsapp",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="M240-320q-33 0-56.5-23.5T160-400q0-33 23.5-56.5T240-480q33 0 56.5 23.5T320-400q0 33-23.5 56.5T240-320Zm480 0q-33 0-56.5-23.5T640-400q0-33 23.5-56.5T720-480q33 0 56.5 23.5T800-400q0 33-23.5 56.5T720-320Zm-240-40q-42 0-71-29t-29-71q0-42 29-71t71-29q42 0 71 29t29 71q0 42-29 71t-71 29ZM284-120q14-69 68.5-114.5T480-280q73 0 127.5 45.5T676-120H284Zm-204 0q0-66 47-113t113-47q17 0 32 3t29 9q-30 29-50 66.5T224-120H80Zm656 0q-7-44-27-81.5T659-268q14-6 29-9t32-3q66 0 113 47t47 113H736ZM88-480l-48-64 440-336 160 122v-82h120v174l160 122-48 64-392-299L88-480Z"/></svg>`,
+    link : 'https://chat.whatsapp.com/Bufz5pOsRZsJEAlmZYH0nT'
+  },
+  {
+    title: "Saluran Whatsapp Kami",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="M440-280H280q-83 0-141.5-58.5T80-480q0-83 58.5-141.5T280-680h160v80H280q-50 0-85 35t-35 85q0 50 35 85t85 35h160v80ZM320-440v-80h320v80H320Zm200 160v-80h160q50 0 85-35t35-85q0-50-35-85t-85-35H520v-80h160q83 0 141.5 58.5T880-480q0 83-58.5 141.5T680-280H520Z"/></svg>`,
+    link : 'https://whatsapp.com/channel/0029Vb4TIMyElagsK3Rnjh2L'
+  },
+];
+---
+
+<section id="kontak" aria-labelledby="cta-heading" class="py-24 bg-white">
+  <div class="max-w-4xl mx-auto px-6 text-center">
+    <h2 id="cta-heading" class="text-4xl font-bold text-slate-900 mb-6">
+      Siap Meningkatkan Standar Kebersihan Anda?
+    </h2>
+    <p class="text-lg text-slate-700 mb-10">
+      Dapatkan katalog lengkap produk kami atau hubungi tim sales untuk
+      penawaran kerja sama B2B dan distribusi.
+    </p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      {
+        data.map((item) => (
+          <a
+            href={item.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="bg-green-600 text-white px-8 py-4 rounded-xl font-bold hover:bg-green-700 transition flex items-center justify-center gap-2 shadow-lg shadow-green-200"
+          >
+            <Fragment set:html={item.icon} />
+            {item.title}
+          </a>
+        ))
+      }
+        <a
+            href={`https://wa.me/legenda`}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="bg-green-600 text-white px-8 py-4 rounded-xl font-bold hover:bg-green-700 transition flex items-center justify-center gap-2 shadow-lg shadow-green-200"
+          >
+           <img src="/whtasapp.svg" class="h-5 invert brightness-0 filter" alt="whatsapp"> Hubungi WhatsApp Kami
+          </a>
+    </div>
+  </div>
+</section>

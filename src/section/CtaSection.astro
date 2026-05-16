@@ -1,4 +1,8 @@
 ---
+interface Props {
+  whatsapp: string; // Menyimpan nomor WhatsApp komersial (contoh: "628123456789")
+}
+
 const { whatsapp } = Astro.props;
 
 const data = [
@@ -38,14 +42,20 @@ const data = [
           </a>
         ))
       }
-        <a
-            href={`https://wa.me/legenda`}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="bg-green-600 text-white px-8 py-4 rounded-xl font-bold hover:bg-green-700 transition flex items-center justify-center gap-2 shadow-lg shadow-green-200"
-          >
-           <img src="/public/whtasapp.svg" class="h-6 invert brightness-0 filter" alt="whatsapp"> Hubungi WhatsApp Kami
-          </a>
+      
+      <!-- Tombol Chat WhatsApp Personal / Sales (Tanpa File Lokal) -->
+      <a
+        href={`https://wa.me{whatsapp}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="bg-green-600 text-white px-8 py-4 rounded-xl font-bold hover:bg-green-700 transition flex items-center justify-center gap-2 shadow-lg shadow-green-200"
+      >
+        <!-- Ikon SVG asli WhatsApp bawaan Google Material Icons tanpa aset gambar eksternal -->
+        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF">
+          <path d="M798-162q-41 42-95 64.5T589-75q-90 0-169-42.5T287-234q-11-13-21.5-27T246-289l-118 39q-19 6-36.5-.5T66-274l39-118q-14-17-26-34.5T58-462q-74-116-41.5-245.5T137-915q44-41 97.5-63T348-1000q114 0 205.5 54.5T696-797q51 77 56 166.5T723-455q-12 25-27 48.5t-32 44.5l39 118q7 19 .5 36.5T682-182l116 20Zm-172-88 18-56 32-32q25-25 43-55t25-63q21-93-21.5-168.5T605-741q-82-41-173.5-30.5T279-703q-51 49-74 113.5T202-454q10 42 27.5 79.5T272-302l-26 78 78-26q37 22 78 33t84 11q52 0 100-18.5t90-53.5Zm-240-52q53-1 96-30t57-78q6-20-4-37.5T502-472q-17-10-33.5-6.5T450-463q-14 15-32 15t-32-15l-68-68q-15-15-15-32t15-32q15-15 11.5-31.5T325-660q-17-23-34.5-33t-37.5-4q-49 14-78 57t-30 96q0 105 73.5 178.5T480-234q4 0 8 0T492-234l-106-68Z"/>
+        </svg>
+        Hubungi WhatsApp Kami
+      </a>
     </div>
   </div>
 </section>

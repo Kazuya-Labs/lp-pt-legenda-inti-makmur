@@ -2,6 +2,7 @@
 import "../styles/global.css";
 import { Image } from 'astro:assets';
 import produk from '../config/data_produk.js';
+import Card from "./ui/Card.astro";
 
 interface Props {
   whatsapp: string;
@@ -26,58 +27,11 @@ const { whatsapp } = Astro.props;
     <ul class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 list-none p-0">
       {
         produk.map((item, i) => (
-          <li class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all border border-slate-100 flex flex-col">
-            <div class="aspect-square bg-slate-200 relative group">
-              {item.image && (
-                <Image 
-                  src={item.image} 
-                  alt={`Foto produk ${item.title}`} 
-                  loading="lazy" 
-                  decoding="async"
-                  width={400}
-                  height={400}
-                  class="flex object-cover items-center aspect-square mx-auto w-full justify-center text-slate-700"
-                />
-              )}
-                 
-              {item.best_seler && (
-                <div class="absolute top-4 left-4 bg-blue-700 text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full">
-                  Best Seller
-                </div>
-              )}
-            </div>
-      
-            <div class="p-6 flex-grow flex flex-col">
-              <h3 class="text-xl font-bold text-slate-900">
-                {item.title}
-              </h3>
-              <p class="text-sm text-slate-700 mt-2 flex-grow">
-                {item.desc}
-              </p>
-      
-              <div class="mt-6 pt-6 border-t border-slate-100">
-                <div class="flex items-center justify-between mb-4">
-                  <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider">
-                    Status Harga:
-                  </span>
-                  <span class="text-xs font-bold text-blue-700 bg-blue-50 px-2 py-1 rounded">
-                    Hubungi Sales
-                  </span>
-                </div>
-      
-                <!-- Perbaikan Kontras, Keamanan Konten, dan Deskripsi Tautan -->
-                <a
-                  href={`https://wa.me/${whatsapp}?text=Halo%20Admin%20PT%20Legenda%20Inti%20Makmur,%20saya%20ingin%20tanya%20harga%20terbaru%20untuk%20product%20${encodeURIComponent(item.title)}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={`Cek harga terbaru untuk ${item.title} via WhatsApp`}
-                  class="block w-full text-center bg-slate-900 text-white py-3 rounded-xl font-bold hover:bg-blue-700 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-700"
-                >
-                  Cek Harga Terbaru
-                </a>
-              </div>
-            </div>
-          </li>
+     <Card title={item.title} image={item.image} desk={item.desc}>
+      <a href={`https://wa.me/${whatsapp}?text=saya+tertarik+dengan+produk+${item.title}+bisa+jelaskan+lebih+detail?`} class="bg-blue-800 text-white font-medium p-2 rounded text-center " target="_blank">
+        Pesan Sekarang
+      </a>
+     </Card>
         ))
       }
     </ul>

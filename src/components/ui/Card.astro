@@ -1,0 +1,60 @@
+---
+import { Image } from "astro:assets";
+
+interface Props {
+  // Gunakan tipe bawaan global 'ImageMetadata' dari Astro (tidak perlu diimpor)
+  image?: string | ImageMetadata; 
+  title: string;
+  desk: string;
+}
+
+const { image, title, desk } = Astro.props;
+
+// Cek apakah gambar berupa objek (ImageMetadata untuk gambar lokal) atau string (URL eksternal)
+const isLocalImage = typeof image === "object";
+---
+
+<div class="w-full max-w-sm rounded-xl overflow-hidden shadow-md bg-white border border-gray-100 flex flex-col h-full transition-transform hover:scale-[1.02] duration-300">
+  
+  <!-- Area Gambar (Hanya muncul jika props 'image' diisi) -->
+  {
+    image && (
+      <div class="w-full h-48 overflow-hidden bg-gray-100">
+        {isLocalImage ? (
+          // Jika gambar lokal, gunakan komponen <Image /> bawaan Astro untuk optimasi otomatis
+          <Image
+            src={image as ImageMetadata}
+            alt={title}
+            class="w-full h-full object-cover"
+            loading="lazy"
+          />
+        ) : (
+          // Jika gambar berupa string URL, gunakan tag <img> standar HTML
+          <img
+            src={image as string}
+            alt={title}
+            class="w-full h-full object-cover"
+            loading="lazy"
+          />
+        )}
+      </div>
+    )
+  }
+
+  <!-- Area Konten -->
+  <div class="p-5 flex flex-col flex-grow justify-between gap-4">
+    <div class="space-y-2">
+      <h3 class="text-xl font-semibold text-gray-800 tracking-tight">
+        {title}
+      </h3>
+      <p class="text-sm text-gray-600 leading-relaxed">
+        {desk}
+      </p>
+    </div>
+
+    <!-- Area CTA (Call to Action) menggunakan Slot -->
+    <div class="mt-auto pt-2">
+      <slot />
+    </div>
+  </div>
+</div>

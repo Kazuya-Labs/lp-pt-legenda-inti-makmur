@@ -1,13 +1,12 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import "../styles/global.css"
+import "../styles/global.css";
 import Cardproduct from "../components/Cardproduct.astro";
 import Navbar from "../components/Navbar.astro";
 import CardTestimoni from "../components/CardTestimoni.astro";
 import Footer from "../components/Footer.astro";
-import video_about from '../assets/about.mp4'
 
-const whatsapp = '6282221155363'
+const whatsapp = "6282221155363";
 ---
 
 <Layout
@@ -16,7 +15,7 @@ const whatsapp = '6282221155363'
 >
   <!-- Perbaikan Aksesibilitas & Performa Navigasi -->
   <header class="fixed w-full bg-white/90 backdrop-blur-sm shadow-sm z-50">
-    <Navbar pt="Legenda Inti Makmur" noWa={whatsapp} />
+    <Navbar pt="Legenda Inti Makmur" />
   </header>
 
   <main id="main-content">
@@ -36,13 +35,13 @@ const whatsapp = '6282221155363'
           id="hero-heading"
           class="mt-6 text-4xl lg:text-6xl font-extrabold text-slate-900 leading-tight"
         >
-          Kualitas Legendaris untuk <br class="hidden lg:block" /> Lingkungan yang Lebih
-          Bersih
+          Kualitas Legendaris untuk <br class="hidden lg:block" /> Lingkungan yang
+          Lebih Bersih
         </h1>
         <p class="mt-6 text-lg lg:text-xl text-slate-700 max-w-2xl mx-auto">
           Kami memproduksi peralatan rumah tangga dan alat kebersihan bermutu
-          tinggi yang dirancang untuk durabilitas, fungsionalitas, dan kenyamanan
-          keluarga Anda.
+          tinggi yang dirancang untuk durabilitas, fungsionalitas, dan
+          kenyamanan keluarga Anda.
         </p>
         <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
           <a
@@ -62,21 +61,22 @@ const whatsapp = '6282221155363'
     </section>
 
     <!-- ABOUT SECTION -->
-    <section id="tentang" aria-labelledby="about-heading" class="py-20 bg-white">
-      <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
+    <section
+      id="tentang"
+      aria-labelledby="about-heading"
+      class="py-20 bg-white"
+    >
+      <div
+        class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center"
+      >
         <div class="rounded-2xl overflow-hidden shadow-xl bg-slate-200">
           <!-- Perbaikan Best Practices Video & Layout Shift -->
-          <video 
-            controls 
-            preload="metadata"
-            width="640"
-            height="360"
-            class="aspect-video w-full object-cover"
-          >
-            <source src={video_about} type="video/mp4">
-            <track kind="captions" src="" label="Indonesia" hreflang="id" />
-            Browser Anda tidak mendukung pemutaran video.
-          </video>
+
+          <iframe
+            src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fweb.facebook.com%2Freel%2F1477321267342023%2F&show_text=false&width=267&t=0"
+            class="aspect-video h-full w-full"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
         <div>
           <h2 id="about-heading" class="text-3xl font-bold text-slate-900 mb-6">
@@ -90,8 +90,9 @@ const whatsapp = '6282221155363'
           </p>
           <p class="text-slate-700 leading-relaxed mb-6">
             Dengan teknologi produksi terkini dan kontrol kualitas yang ketat,
-            produk-produk kami (termasuk lini merek unggulan kami) dirancang untuk
-            memberikan solusi kebersihan yang praktis, higienis, dan tahan lama.
+            produk-produk kami (termasuk lini merek unggulan kami) dirancang
+            untuk memberikan solusi kebersihan yang praktis, higienis, dan tahan
+            lama.
           </p>
           <ul class="space-y-3 text-slate-800 font-medium">
             <li class="flex items-center gap-3">
@@ -160,12 +161,15 @@ const whatsapp = '6282221155363'
       </div>
       <div class="max-w-7xl mx-auto px-6 relative z-10">
         <div class="text-center mb-16">
-          <h2 id="testimonial-heading" class="text-3xl font-bold mb-4">Dipercaya oleh Jutaan Keluarga</h2>
+          <h2 id="testimonial-heading" class="text-3xl font-bold mb-4">
+            Dipercaya oleh Jutaan Keluarga
+          </h2>
           <p class="text-blue-100">
-            Lihat bagaimana produk kami memberikan kemudahan nyata setiap harinya.
+            Lihat bagaimana produk kami memberikan kemudahan nyata setiap
+            harinya.
           </p>
         </div>
-        <CardTestimoni/>
+        <CardTestimoni />
       </div>
     </section>
 
@@ -186,7 +190,11 @@ const whatsapp = '6282221155363'
             rel="noopener noreferrer"
             class="bg-green-600 text-white px-8 py-4 rounded-xl font-bold hover:bg-green-700 transition flex items-center justify-center gap-2 shadow-lg shadow-green-200"
           >
-            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"
+            <svg
+              class="w-6 h-6"
+              fill="currentColor"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
               ><path
                 d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.573-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.099.824z"
               ></path></svg
@@ -198,5 +206,5 @@ const whatsapp = '6282221155363'
     </section>
   </main>
 
-  <Footer/>
+  <Footer />
 </Layout>

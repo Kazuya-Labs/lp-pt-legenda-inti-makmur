@@ -1,0 +1,40 @@
+---
+import "../styles/global.css";
+import { Image } from 'astro:assets';
+import produk from '../config/data_produk.js';
+import Card from "../components/ui/Card.astro";
+
+
+interface Props {
+  whatsapp: string;
+}
+
+const { whatsapp } = Astro.props;
+---
+
+<section id="produk" aria-labelledby="produk-heading" class="py-20 bg-slate-50">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="text-center max-w-2xl mx-auto mb-16">
+      <h2 id="produk-heading" class="text-3xl font-bold text-slate-900 mb-4">
+        Koleksi Produk Unggulan
+      </h2>
+      <p class="text-slate-700 italic">
+        "Kualitas legendaris dengan penawaran harga terbaik untuk kebutuhan
+        retail maupun skala besar."
+      </p>
+    </div>
+
+    <!-- Menggunakan elemen list semantik untuk struktur katalog produk -->
+    <ul class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 list-none p-0">
+      {
+        produk.map((item, i) => (
+     <Card title={item.title} image={item.image} desk={item.desc}>
+      <a href={`https://wa.me/${whatsapp}?text=saya+tertarik+dengan+produk+${item.title}+bisa+jelaskan+lebih+detail?`} class="bg-blue-800 text-white font-medium p-2 rounded text-center " target="_blank">
+        Pesan Sekarang
+      </a>
+     </Card>
+        ))
+      }
+    </ul>
+  </div>
+</section>

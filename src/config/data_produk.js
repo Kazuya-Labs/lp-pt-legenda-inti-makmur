@@ -1,3 +1,4 @@
+// 1. Import Semua Aset Gambar Produk (Termasuk perbaikan yang sebelumnya kurang)
 import pelPelan from '../assets/produk/pelpelan.jpg';
 import sapuRayung from '../assets/produk/sapu-rayung.jpg';
 import pelHanduk from '../assets/produk/pelhanduk.jpg';
@@ -7,7 +8,10 @@ import sapuTaman from '../assets/produk/Sapu Taman.jpg';
 import pengkiSisir from '../assets/produk/Pengki Sisir.jpg';
 import jasHujan from '../assets/produk/Jas Hujan.jpg';
 import kemoceng from '../assets/produk/kemoceng.jpg';
+import cakarDaun from '../assets/produk/cakar-daun.jpg'; // Tambahan import
+import sikatToilet from '../assets/produk/sikat-toilet.jpg'; // Tambahan import
 
+// 2. Data Array Produk Terstruktur
 const produk = [
   {
     best_seller: true,
@@ -68,9 +72,23 @@ const produk = [
   {
     best_seller: false,
     image: kemoceng,
-    alt: 'Kemoceng',
+    alt: 'kemoceng',
     title: "Kemoceng",
-    desc: "Dibuat Dengan Bahan-Bahan Premium",
+    desc: "Bulu premium yang halus dan rapat, efektif mengikat debu tanpa beterbangan serta gagang yang nyaman digenggam.",
+  },
+  {
+    best_seller: false,
+    image: cakarDaun, // Menggunakan variabel camelCase hasil import
+    alt: 'cakar-daun',
+    title: "Cakar Daun",
+    desc: "Garpu taman multifungsi berbahan besi kokoh untuk mengumpulkan sampah daun atau menggemburkan tanah dengan mudah.",
+  },
+  {
+    best_seller: false,
+    image: sikatToilet, // Menggunakan variabel camelCase hasil import
+    alt: 'sikat-toilet',
+    title: "Sikat Toilet",
+    desc: "Bulu sikat nilon bundar yang elastis dan kuat, efektif menjangkau sela-sela kloset untuk kebersihan maksimal.",
   }
 ];
 

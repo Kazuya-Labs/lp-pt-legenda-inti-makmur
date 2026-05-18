@@ -1,0 +1,26 @@
+---
+import CardTestimoni from "../components/CardTestimoni.astro";
+---
+
+<section
+  id="testimoni"
+  aria-labelledby="testimonial-heading"
+  class="py-20 bg-blue-900 text-white relative overflow-hidden"
+>
+  <div
+    class="absolute top-0 right-0 -mr-20 -mt-20 w-72 h-72 rounded-full bg-blue-800/50 blur-3xl"
+    aria-hidden="true"
+  >
+  </div>
+  <div class="max-w-7xl mx-auto px-6 relative z-10">
+    <div class="text-center mb-16">
+      <h2 id="testimonial-heading" class="text-3xl font-bold mb-4">
+        Dipercaya oleh Jutaan Keluarga
+      </h2>
+      <p class="text-blue-100">
+        Lihat bagaimana produk kami memberikan kemudahan nyata setiap harinya.
+      </p>
+    </div>
+    <CardTestimoni />
+  </div>
+</section>

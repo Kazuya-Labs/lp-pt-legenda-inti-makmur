@@ -81,7 +81,7 @@ const produk = [
     image: cakarDaun, // Menggunakan variabel camelCase hasil import
     alt: 'cakar-daun',
     title: "Cakar Daun",
-    desc: "Garpu taman multifungsi berbahan besi kokoh untuk mengumpulkan sampah daun atau menggemburkan tanah dengan mudah.",
+    desc: "Cakar Taman multifungsi berbahan plastik kokoh untuk mengumpulkan sampah daun atau menggemburkan tanah dengan mudah.",
   },
   {
     best_seller: false,

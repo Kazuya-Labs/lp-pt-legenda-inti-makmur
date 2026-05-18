@@ -1,11 +1,12 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import "../styles/global.css";
-import Cardproduct from "../components/Cardproduct.astro";
 import Navbar from "../components/Navbar.astro";
-import CardTestimoni from "../components/CardTestimoni.astro";
 import Footer from "../components/Footer.astro";
 import CtaSection from "../section/CtaSection.astro";
+import About from "../section/About.section.astro";
+import Pricing from "../section/Pricing.section.astro";
+import Testimonial from "../section/Testimonial.section.astro";
 
 const whatsapp = "6282221155363";
 ---
@@ -13,6 +14,7 @@ const whatsapp = "6282221155363";
 <Layout
   title="PT Legenda Inti Makmur | Solusi Alat Kebersihan & Perabotan Plastik Terbaik"
   description="PT Legenda Inti Makmur menghadirkan produk plastik dan alat kebersihan berkualitas tinggi untuk rumah tangga dan industri yang awet, fungsional, dan inovatif."
+  canonicalURL={String(Astro.url)}
 >
   <!-- Perbaikan Aksesibilitas & Performa Navigasi -->
   <header class="fixed w-full bg-white/90 backdrop-blur-sm shadow-sm z-50">
@@ -62,120 +64,16 @@ const whatsapp = "6282221155363";
     </section>
 
     <!-- ABOUT SECTION -->
-    <section
-      id="tentang"
-      aria-labelledby="about-heading"
-      class="py-20 bg-white"
-    >
-      <div
-        class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center"
-      >
-        <div class="rounded-2xl overflow-hidden shadow-xl bg-slate-200">
-          <!-- Perbaikan Best Practices Video & Layout Shift -->
-
-          <iframe
-            src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fweb.facebook.com%2Freel%2F1477321267342023%2F&show_text=false&width=267&t=0"
-            class="aspect-video h-full w-full"
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"></iframe>
-        </div>
-        <div>
-          <h2 id="about-heading" class="text-3xl font-bold text-slate-900 mb-6">
-            Apa itu PT Legenda Inti Makmur?
-          </h2>
-          <p class="text-slate-700 leading-relaxed mb-4">
-            PT Legenda Inti Makmur adalah perusahaan manufaktur terkemuka yang
-            berfokus pada produksi peralatan kebersihan dan perabotan berbahan
-            plastik berkualitas. Melalui dedikasi bertahun-tahun, kami telah
-            menjadi mitra terpercaya bagi jutaan keluarga di Indonesia.
-          </p>
-          <p class="text-slate-700 leading-relaxed mb-6">
-            Dengan teknologi produksi terkini dan kontrol kualitas yang ketat,
-            produk-produk kami (termasuk lini merek unggulan kami) dirancang
-            untuk memberikan solusi kebersihan yang praktis, higienis, dan tahan
-            lama.
-          </p>
-          <ul class="space-y-3 text-slate-800 font-medium">
-            <li class="flex items-center gap-3">
-              <svg
-                class="w-6 h-6 text-blue-600"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-                ><path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M5 13l4 4L19 7"></path></svg
-              >
-              Material Plastik & Logam Premium
-            </li>
-            <li class="flex items-center gap-3">
-              <svg
-                class="w-6 h-6 text-blue-600"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-                ><path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M5 13l4 4L19 7"></path></svg
-              >
-              Desain Ergonomis & Fungsional
-            </li>
-            <li class="flex items-center gap-3">
-              <svg
-                class="w-6 h-6 text-blue-600"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-                ><path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M5 13l4 4L19 7"></path></svg
-              >
-              Distribusi Berskala Nasional
-            </li>
-          </ul>
-        </div>
-      </div>
-    </section>
+    <About />
 
     <!-- PRODUCTS SECTION -->
-    <Cardproduct whatsapp={whatsapp} />
+    <Pricing whatsapp={whatsapp} />
 
     <!-- TESTIMONIALS SECTION -->
-    <section
-      id="testimoni"
-      aria-labelledby="testimonial-heading"
-      class="py-20 bg-blue-900 text-white relative overflow-hidden"
-    >
-      <div
-        class="absolute top-0 right-0 -mr-20 -mt-20 w-72 h-72 rounded-full bg-blue-800/50 blur-3xl"
-        aria-hidden="true"
-      >
-      </div>
-      <div class="max-w-7xl mx-auto px-6 relative z-10">
-        <div class="text-center mb-16">
-          <h2 id="testimonial-heading" class="text-3xl font-bold mb-4">
-            Dipercaya oleh Jutaan Keluarga
-          </h2>
-          <p class="text-blue-100">
-            Lihat bagaimana produk kami memberikan kemudahan nyata setiap
-            harinya.
-          </p>
-        </div>
-        <CardTestimoni />
-      </div>
-    </section>
+    <Testimonial />
 
     <!-- CTA SECTION -->
-    <CtaSection whatsapp={whatsapp}/>
+    <CtaSection whatsapp={whatsapp} />
   </main>
 
   <Footer />

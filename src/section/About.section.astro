@@ -1,0 +1,70 @@
+---
+import content_about from "../content/about";
+---
+
+<section id="tentang" aria-labelledby="about-heading" class="py-20 bg-white">
+  <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
+    <div
+      class="rounded-2xl overflow-hidden shadow-xl bg-slate-200 w-full h-[60vh] md:h-full"
+    >
+      <!-- Perbaikan Best Practices Video & Layout Shift -->
+      <iframe
+        src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fweb.facebook.com%2FTOKOnlineNUsantara%2Fvideos%2F24525506927034422%2F&show_text=false&t=0"
+        class="w-full aspect-auto h-full"
+        allowfullscreen="true"
+        referrerpolicy="no-referrer-when-downgrade"
+        allow="fullscreen"
+        data-width="auto"></iframe>
+    </div>
+    <div>
+      <h2 id="about-heading" class="text-3xl font-bold text-slate-900 mb-6">
+        {content_about.h2}
+      </h2>
+      <p class="text-slate-700 leading-relaxed mb-4">
+        {content_about.desk1}
+      </p>
+      <p class="text-slate-700 leading-relaxed mb-6">
+        {content_about.desk2}
+      </p>
+
+      <ul class="space-y-3 text-slate-800 font-medium">
+        {
+          content_about.keunggulan.text.slice(0, 3).map((v) => (
+            <li class="flex items-center gap-3">
+              <Fragment
+                class="w-6 h-6 text-blue-600"
+                set:html={content_about.keunggulan.icon_svg}
+              />
+              {v}
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+    <div>
+      <p class="font-semibold my-1">
+        <span class="bg-neutral-900 text-amber-400 rounded-md p-1">
+          Kesempatan Emas
+        </span>
+        <br class="my-2" />
+        Bergabunglah Menjadi distributor legenda Inti Makmur. Punya Penghasilan bukan
+        sekedar mimpi!
+      </p>
+      <ul class="space-y-3 text-slate-800 font-medium">
+        {
+          content_about.keunggulan.text
+            .slice(3, content_about.keunggulan.text.length)
+            .map((v) => (
+              <li class="flex items-center gap-3">
+                <Fragment
+                  class="w-full h-full text-blue-600"
+                  set:html={content_about.keunggulan.icon_svg}
+                />
+                {v}
+              </li>
+            ))
+        }
+      </ul>
+    </div>
+  </div>
+</section>

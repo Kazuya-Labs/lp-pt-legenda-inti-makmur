@@ -45,7 +45,7 @@ const {
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content={new URL(image, Astro.url)} />
+    <meta property="og:image" content={image} />
     <meta property="og:image:alt" content={`Gambar pratinjau untuk ${title}`} />
     <meta property="og:locale" content="id_ID" />
     <meta property="og:site_name" content="PT Legenda Inti Makmur" />
@@ -55,7 +55,7 @@ const {
     <meta name="twitter:url" content={canonicalURL} />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={new URL(image, Astro.url)} />
+    <meta name="twitter:image" content={image} />
   </head>
   <body class="bg-slate-50 font-sans text-slate-800 antialiased">
     <main>

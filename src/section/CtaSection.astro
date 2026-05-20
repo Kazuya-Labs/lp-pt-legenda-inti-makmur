@@ -12,16 +12,11 @@ const data = [
     icon: `<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="M440-280H280q-83 0-141.5-58.5T80-480q0-83 58.5-141.5T280-680h160v80H280q-50 0-85 35t-35 85q0 50 35 85t85 35h160v80ZM320-440v-80h320v80H320Zm200 160v-80h160q50 0 85-35t35-85q0-50-35-85t-85-35H520v-80h160q83 0 141.5 58.5T880-480q0 83-58.5 141.5T680-280H520Z"/></svg>`,
     link: "https://whatsapp.com/channel/0029Vb4TIMyElagsK3Rnjh2L",
   },
-  // {
-  //   title: "Follow Tiktok Kami",
-  //   icon: ` <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" width="24px" height="24px" fill="#FFFFFF"
-  //         >
-  //         <path
-  //           d="M448.5 209.9c-44 .1-87-13.6-122.8-39.2l0 178.7c0 33.1-10.1 65.4-29 92.6s-45.6 48-76.6 59.6-64.8 13.5-96.9 5.3-60.9-25.9-82.7-50.8-35.3-56-39-88.9 2.9-66.1 18.6-95.2 40-52.7 69.6-67.7 62.9-20.5 95.7-16l0 89.9c-15-4.7-31.1-4.6-46 .4s-27.9 14.6-37 27.3-14 28.1-13.9 43.9 5.2 31 14.5 43.7 22.4 22.1 37.4 26.9 31.1 4.8 46-.1 28-14.4 37.2-27.1 14.2-28.1 14.2-43.8l0-349.4 88 0c-.1 7.4 .6 14.9 1.9 22.2 3.1 16.3 9.4 31.9 18.7 45.7s21.3 25.6 35.2 34.6c19.9 13.1 43.2 20.1 67 20.1l0 87.4z"
-  //         ></path></svg
-  //       >`,
-  //   link: "https://whatsapp.com/channel/0029Vb4TIMyElagsK3Rnjh2L",
-  // },
+  {
+    title: "Ikuti Shopee Kami",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="M160-720v-80h640v80H160Zm0 560v-240h-40v-80l40-200h640l40 200v80h-40v240h-80v-240H560v240H160Zm80-80h240v-160H240v160Zm-38-240h556-556Zm0 0h556l-24-120H226l-24 120Z"/></svg>`,
+    link: "https://id.shp.ee/av6vBM7D",
+  },
 ];
 ---
 
@@ -35,6 +30,18 @@ const data = [
       penawaran kerja sama B2B dan distribusi.
     </p>
     <div class="flex flex-col sm:flex-row gap-4 items-center justify-center">
+      <a
+        href={`https://wa.me/legenda`}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="bg-blue-600 text-white px-8 py-4 rounded-xl font-bold hover:bg-blue-700 transition flex items-center justify-start gap-2 shadow-lg shadow-blue-200"
+      >
+        <img
+          src="/whtasapp.svg"
+          class="h-5 invert brightness-0 filter"
+          alt="whatsapp"
+        /> Hubungi WhatsApp Kami
+      </a>
       {
         data.map((item) => (
           <a
@@ -49,22 +56,10 @@ const data = [
         ))
       }
       <a
-        href={`https://wa.me/legenda`}
-        target="_blank"
-        rel="noopener noreferrer"
-        class="bg-blue-600 text-white px-8 py-4 rounded-xl font-bold hover:bg-blue-700 transition flex items-center justify-start gap-2 shadow-lg shadow-blue-200"
-      >
-        <img
-          src="/whtasapp.svg"
-          class="h-5 invert brightness-0 filter"
-          alt="whatsapp"
-        /> Hubungi WhatsApp Kami
-      </a>
-      <a
         href={`https://www.tiktok.com/@cs_cleantols`}
         target="_blank"
         rel="noopener noreferrer"
-        class="bg-blue-600 text-white px-8 py-4  rounded-xl font-bold hover:bg-blue-700 transition flex items-center justify-start gap-2 shadow-lg shadow-blue-200"
+        class="bg-blue-600 text-white px-8 py-4 rounded-xl font-bold hover:bg-blue-700 transition flex items-center justify-start gap-2 shadow-lg shadow-blue-200"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"

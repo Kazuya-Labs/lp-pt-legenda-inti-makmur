@@ -1,9 +1,7 @@
 ---
 import "../styles/global.css";
-import { Image } from 'astro:assets';
 import produk from '../config/data_produk.js';
 import Card from "../components/ui/Card.astro";
-
 
 interface Props {
   whatsapp: string;
@@ -25,16 +23,25 @@ const { whatsapp } = Astro.props;
     </div>
 
     <!-- Menggunakan elemen list semantik untuk struktur katalog produk -->
-    <ul class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 list-none p-0">
+    <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 list-none p-0">
       {
-        produk.map((item, i) => (
-     <Card title={item.title} image={item.image} desk={item.desc}>
-      <a href={`https://wa.me/${whatsapp}?text=saya+tertarik+dengan+produk+${item.title}+bisa+jelaskan+lebih+detail?`} class="bg-blue-800 text-white font-medium p-2 rounded text-center " target="_blank">
-        Pesan Sekarang
-      </a>
-     </Card>
+        produk.map((item) => (
+          <li>
+            <Card title={item.title} image={item.image} desk={item.desc}>
+              <a 
+                href={`https://wa.me/${whatsapp}?text=saya+tertarik+dengan+produk+${encodeURIComponent(item.title)}+bisa+jelaskan+lebih+detail?`} 
+                class="inline-block w-full text-center bg-blue-800 hover:bg-blue-900 text-white font-semibold py-2.5 px-4 rounded-lg transition-colors focus:ring-4 focus:ring-blue-300"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`Beli ${item.title} - Dapatkan Harga Khusus lewat WhatsApp`}
+              >
+                Dapatkan Harga Khusus
+              </a>
+            </Card>
+          </li>
         ))
       }
     </ul>
   </div>
 </section>
+
